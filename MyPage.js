@@ -4,7 +4,6 @@ import { useState } from "react";
 import BasicModal from "../components/Modal/BasicModal";
 import Timer from "../components/Timer"
 
-
 function MyPage() {
   const [modalVisible, setModalVisible] = useState(false);
   const [currentStep, setCurrentStep] = useState(0); // 각 버튼의 상태를 저장할 변수
@@ -22,13 +21,42 @@ function MyPage() {
   const getImageSource = (step) => {
     switch (step) {
       case 1:
-        return require("../assets/홈.png");
+        return require("../assets/가이드화면/홈가이드 (1).png");
       case 2:
-        return require("../assets/캘린더.png");
+        return require("../assets/가이드화면/홈가이드 (2).png");
       case 3:
-        return require("../assets/회고록.png");
+        return require("../assets/가이드화면/홈가이드 (3).png");
       case 4:
-        return require("../assets/환경설정.png");
+        return require("../assets/가이드화면/홈가이드 (4).png");
+      case 5:
+        return require("../assets/가이드화면/홈가이드 (5).png");
+      case 6:
+        return require("../assets/가이드화면/홈가이드 (6).png");
+      case 7:
+        return require("../assets/가이드화면/홈가이드 (7).png");
+      case 8:
+        return require("../assets/가이드화면/홈가이드 (8).png");
+      case 9:
+        return require("../assets/가이드화면/홈가이드 (9).png");
+      case 10:
+        return require("../assets/가이드화면/홈가이드 (10).png");
+      case 11:
+        return require("../assets/가이드화면/홈가이드 (11).png");
+      case 12:
+        return require("../assets/가이드화면/홈가이드 (12).png");
+      case 13:
+        return require("../assets/가이드화면/홈가이드 (13).png");
+      case 14:
+        return require("../assets/가이드화면/홈가이드 (14).png");
+      case 15:
+        return require("../assets/가이드화면/홈가이드 (15).png");
+      case 16:
+        return require("../assets/가이드화면/홈가이드 (16).png");
+      case 17:
+        return require("../assets/가이드화면/홈가이드 (17).png");
+      case 18:
+        return require("../assets/가이드화면/홈가이드 (18).png");
+
       default:
         return null;
     }
@@ -53,28 +81,46 @@ function MyPage() {
       </View>
 
       <View style={[S.container]}>
+        <BasicButton
+          title={"홈 가이드"}
+          onPress={() => handleModalVisible(1)}
+          style={S.text} // 스타일 추가
+        />
 
+         <BasicButton
+          title={"캘린더 가이드"}
+          onPress={() => handleModalVisible(41)} // 새로운 스텝 번호(41) 사용하여 타이머 버튼 누를 시, 모달에 새로운 화면을 띄움
+          style={S.text}
+        /> 
 
-        <View style={[S.container]}>
-          <BasicButton
-            title={"매일이 가이드"}
-            onPress={() => handleModalVisible(1)}
-            style={S.text} // 스타일 추가
-          />
+        <BasicButton
+          title={"회고록 가이드"}
+          onPress={() => handleModalVisible(41)} // 새로운 스텝 번호(41) 사용하여 타이머 버튼 누를 시, 모달에 새로운 화면을 띄움
+          style={S.text}
+        /> 
 
-          <BasicButton
-            title={"타이머"}
-            onPress
-            style={S.text}
-          />
+        <BasicButton
+          title={"환경설정 가이드"}
+          onPress={() => handleModalVisible(41)} // 새로운 스텝 번호(41) 사용하여 타이머 버튼 누를 시, 모달에 새로운 화면을 띄움
+          style={S.text}
+        /> 
 
-          <BasicModal
-            modalVisible={modalVisible}
-            setModalVisible={handleModalClose}
-          >
+        <BasicButton
+          title={"타이머"}
+          onPress={() => handleModalVisible(41)} // 새로운 스텝 번호(41) 사용하여 타이머 버튼 누를 시, 모달에 새로운 화면을 띄움
+          style={S.text}
+        /> 
+
+        <BasicModal
+          modalVisible={modalVisible}
+          setModalVisible={handleModalClose}
+          
+        >
+          {currentStep === 41 ? ( //스텝이 41일 경우 해당하는 화면(Timer)를 띄움
+            <Timer />
+            
+          ) : (
             <View style={S.modalContainer}>
-
-
               <Image source={getImageSource(currentStep)} style={S.image} />
 
               <View style={S.buttonContainer}>
@@ -100,9 +146,8 @@ function MyPage() {
                 color="#DCB3FE"
               />
             </View>
-          </BasicModal>
-        </View>
-        <Timer />
+          )}
+        </BasicModal>
       </View>
     </>
   );
@@ -158,7 +203,7 @@ const S = StyleSheet.create({
     borderRadius: 4,
     elevation: 3,
     borderRadius: 25,
-    marginBottom: 40, // 버튼 간 간격
+    marginBottom: 35, // 버튼 간 간격
   },
 
 
